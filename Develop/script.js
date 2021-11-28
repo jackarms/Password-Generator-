@@ -1,13 +1,14 @@
 // Assignment code here
-var lowerCase = "abcdefghijklmnopqrstuvwxyz"
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numbers = "1234567890"
-var specialCharacters = "!@#$%^&*()~<>?/"
+var masterArray = [];
+var lowerCase = ('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z');
+var upperCase = ('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z');
+var numbers = ('1','2','3','4','5','6','7','8','9','0');
+var specialCharacters = ('!','@','#','$','%','^','&','*');
+var length;
 
-// Get references to the #generate element, this var ties us to Generate Password button.
+
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
   window.alert("Before we begin let's set a few parameters first.");
   
@@ -21,39 +22,60 @@ function writePassword() {
   
   var promptLetters = window.prompt("Would you like to use upperCase, lowerCase, or both in your password?");
   if (promptLetters === "both" || promptLetters === "BOTH"){
-    promptLetters = lowerCase + upperCase
+    var both = lowerCase + upperCase
+    if(both == true){masterArray.push(lowerCase + upperCase)}
     alert("You have selected both upper and lowercase.")
   }
   else if (promptLetters === "lowercase" || promptLetters === "LOWERCASE"){
-    promptLetters = lowerCase
+    var lower = lowerCase
+    if(lower = lowerCase){masterArray.push(lowerCase)}
     alert("You have selected lowercase only.")}
   else if (promptLetters === "uppercase" || promptLetters === "UPPERCASE"){
-    promptLetters = upperCase
+    var upper = upperCase
+    if(upper == upperCase){masterArray.push(upperCase)}
     alert("You have selected uppercase only.");
   };
   console.log(promptLetters);
 
   window.alert("Good job! Just a couple more questions.");
   
-  var confirmNumbers = window.confirm("Would you like to use numbers in your password?");
-  if(confirmNumbers == true){
-    confirmNumbers = numbers
+  var pickNumbers = window.confirm("Would you like to use numbers in your password?");
+  if(pickNumbers == true){
+    var confirmNumbers = numbers
+    if(confirmNumbers == numbers){masterArray.push(numbers)}
     alert("You have chosen to use numbers.")}
     else{alert("You have chosen not to use numbers.")};
-  console.log(confirmNumbers)
+  console.log(pickNumbers)
   
   var confirmCharacters = window.confirm("Would you like to use special characters in your password?");
   if(confirmCharacters == true){
-    confirmCharacters = specialCharacters
+    var characters = specialCharacters
+    if(characters == specialCharacters){masterArray.push(specialCharacters)}
     alert("You have chose to use special characters.")}
     else{alert("You chosen not to use special characters.")};
   console.log(confirmCharacters)
   
   var passwordText = document.querySelector("#password")
 
+  
+let password = []
+for(let i = 0; i < length; i ++){
+  if(password.length < length){
+    let char = masterArray[Math.floor(Math.random()*masterArray.length)]
+    password.push(char)
+  }
+}
   passwordText.value = password;
 
 }
+
+
+
+
+
+
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
